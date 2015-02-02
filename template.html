@@ -1,0 +1,20 @@
+<table border="0">
+<tbody>
+<tr>
+<td colspan="3"><h5>{{ restaurant.name }}</h5></td>
+</tr>
+{% for data in restaurant.data %}
+    <tr><td colspan="3"><b>{{ data.name }}</b></td></tr>
+    {% for subcategory in data.subcategories %}
+        <tr><td colspan="3" align="center">{{ subcategory.name }}</td></tr>
+        {% for item in subcategory.items %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.size}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+</tbody>
+</table>
