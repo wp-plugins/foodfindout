@@ -8,7 +8,9 @@
 *Version: 1.0.0
 */
 
-require_once (__DIR__.'/Twig-1.18.0/lib/Twig/Autoloader.php');
+if(class_exists('Twig_Autoloader')==false){
+       require_once(__DIR__.'/Twig-1.18.0/lib/Twig/Autoloader.php');
+}
 Twig_Autoloader::register();
 
 function insert_rest_info($atts){      
