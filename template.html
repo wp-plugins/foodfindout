@@ -1,20 +1,189 @@
-<table border="0">
-<tbody>
-<tr>
-<td colspan="3"><h5>{{ restaurant.name }}</h5></td>
-</tr>
-{% for data in restaurant.data %}
-    <tr><td colspan="3"><b>{{ data.name }}</b></td></tr>
+<style type="text/css">
+    html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table,
+    ul,dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object, a, abbr,
+    acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+    strong, sub, sup, tt, var, legend, fieldset {
+        margin: 0; padding: 0; outline:none
+    }
+
+img, fieldset { border: 0; }
+
+/* set image max width to 100% */
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+/* set html5 elements to block */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/*************************************************************************************
+	GENERAL
+ *************************************************************************************/
+body {
+    min-height:100%; height:100%;
+    margin: 0; padding: 0;
+    font: normal 1em 'Lato', sans-serif;
+    color:#393939;
+    font-smooth: always;
+    line-height:150%;
+}
+a, a:visited, a:hover, a:focus { color:#000; text-decoration: none;outline:none}
+p { margin: 0 0 1.2em; padding: 0; }
+hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:none;}
+.ln-bg_wrapper, #ln-wrapper{width:100%;height:100%;min-height:100%;}
+
+.copyright {width:13%;font: normal 0.6em Arial, Helvetica, sans-serif; color:#545454; text-align:center;position:fixed; bottom: 2em;}
+.leftSide {float:left;}
+.rightSide {height:100%;float:right;}
+
+/******-------------------
+	LEFT - NAV
+ -------------------******/
+.ln-bg_wrapperLeft{ width:13%;/*height:100% !important; */float:left; overflow:hidden; z-index:10;background-color;:#FFF;}
+#wrapperLeft {padding: 0 0.5em;margin: 1em auto;text-align:center; font-size: 1.1em; color:#858585;}
+.logo {margin: 0 0 1.5em 0;}
+.mainNav {width:85%;margin: 0 auto;list-style:none;}
+.mainNav li {padding: 1.1em 0; border-top: 1px solid #e0e0e0;}
+.mainNav li.last {border-bottom: 1px solid #e0e0e0;}
+.mainNav li a {color:#858585;}
+
+.socialMedia {width:100%;margin: 2em auto;}
+.socialMedia a {margin: 0 0.5em;}
+.socialMedia a img {max-width:32%}
+
+/******-------------------
+	RIGHT - MAIN
+ -------------------******/
+.ln-bg_wrapperRight{width:87%;height:100%; float:left;/*background-color:#d22531;*/}
+#wrapperGallery {width:100%;height:100%;position:fixed;top:0;}
+
+.ln-bg_wrapperBody {height:100%;min-height:100% !important; position:fixed; top: 0; padding:0;background:url(../images/bg-body-content.png) top left scroll repeat; overflow:hidden;z-index:990;}
+.largeBody {width:42%;}
+.smallBody { width: 25%;}
+#wrapperBody{ height:100%;min-height:100% !important;float:left; position:relative; top:0; padding: 0 2%;z-index:999;}
+.smallContentBody {width: 25%;}
+.largeContentBody {width: 42%;}
+
+.pgTitle {width: 100%;font-size: 1.8em; font-weight:normal; line-height:120%;margin: 6.8em 0 1em 0;}
+.pgContent {position:relative;padding: 0 0 1em 0;}
+.pgSubTitle {width: 100%; font-size: 1.4em; font-weight:normal;color:#000;margin: 0 0 1em 0;}
+.titleLink {font-size: 1.2em;  /*margin: -1em 0 0 0;*/}
+.titleLink a{font-weight:bold; margin: 0 0.5em;}
+.titleLink a.first {margin-left:0;}
+.titleLink a:hover, .titleLink a.active{color:#C30; font-style:italic;}
+
+/****-- MENU --****/
+.menuList, .menuListSmall, .menuDrink {list-style:none; width: 100%;overflow:hidden;}
+.menuList li, .menuListSmall li {width: 48%;float:left;display:table;}
+.menuList li:last-child, .menuListSmall li:last-child {float:right;}
+.menuList .itemList {width:98%; min-height: 80px;overflow:hidden;display:table-row;}
+.menuList .itemList2 {width:98%; overflow:hidden;}
+.menuList .leftSide, .menuDrink .leftSide {width: 87%;display:table-cell;}
+.menuList .rightSide {width: 13%;text-align:right;display:table-cell;}
+.menuList h3, .menuListSmall h3, .menuDrink h3 {font-size: 1.05em;font-family:Georgia, "Times New Roman", Times, serif;}
+.menuList .itemDesc {font-size:0.95em;line-height:120%;}
+
+.menuListSmall .itemList {width:98%; overflow:hidden;margin: 0 0 0.5em 0;}
+.menuListSmall .rightSide {text-align:right;}
+.menuListSmall .txt_note {font: normal 0.8em 'Lato', sans-serif; font-style:italic;}
+
+.menuDrink li{width:100%;display:block;}
+
+/*************************************************************************************
+	MEDIA JQUERY
+ *************************************************************************************/
+@media screen and (max-width: 1280px) {
+    .largeBody,.smallBody {width: 55%;}
+    .smallContentBody, .largeContentBody {width: 58%}
+}
+@media screen and (max-width: 980px) {
+    .ln-bg_wrapperLeft{ width: 27%;}
+    .ln-bg_wrapperRight {width: 73%;}
+    #wrapperGallery {height:100%;}
+    #wrapperGallery .bgImg {min-height:100%;height: 100% !important; width: auto !important;display:block}
+    .largeBody,.smallBody {width: 45%;}
+    #wrapperBody {padding: 0 3%;}
+    .smallContentBody, .largeContentBody {width: 55%}
+    .menuList li, .menuListSmall li {width: 100%;float:none;}
+    .menuList .itemList {min-height: 0;}
+    .copyright {width: 27%;}
+}
+@media screen and (max-width: 768px) { /* 604 */
+    .ln-bg_wrapperLeft {width: 100%; height:auto;}
+    #wrapperLeft {width:100%;margin: 0.1em auto;font-size:1em; background-color:#FFF;z-index:9;}
+    .logo { width:25%;margin: 0.2em auto;display:inline-block;}
+    .mainNav {width:100%; margin: 0.3em auto; text-align:center;}
+    .mainNav li {display:inline-block;padding: 0 0.8em; border:none;}
+    .mainNav li:last-child {border:none;}
+    .socialMedia {display:none;}
+    .ln-bg_wrapperRight {width:100%;background:none;}
+    
+    #wrapperBody {width: 92%;padding: 0 4%;}
+    #wrapperGallery {height:auto; position:static;}
+    #wrapperGallery .bgImg {width: 100% !important; min-height: 5%; height: auto !important;}
+    .smallBody, .largeBody {width:100%;position:relative;}
+    .pgTitle {font-size:1.3em;margin:1em 0 0.5em 0;}
+    .pgSubTitle {font-size: 1em; margin-bottom:0.5em;}
+    .menuList .itemList, .menuDrink .itemList{font-size:0.85em;}
+    .menuList h3, .menuListSmall h3, .menuDrink h3 {font-size: 1em;}
+    .copyright {width: 100%; position:static;}
+}
+@media screen and (max-width: 480px) {
+    #wrapperLeft {font-size:0.7em;}
+    .titleLink {font-size:1em;}
+    .titleLink a {margin:0;}
+    .menuList .leftSide, .menuList .rightSide, .menuDrink .leftSide, .menuDrink .rightSide {width:100%;display:block;}
+    .menuList .rightSide, .menuDrink .rightSide {text-align:left;margin: -1em 0 0.5em 0;}
+}
+
+@media screen and (max-width: 384px) {
+    #wrapperLeft {font-size:0.8em;}
+    .mainNav li {padding: 0 0.6em; border:none;}
+    #wrapperLeft {font-size:0.55em;}
+}
+
+    </style>
+<div class="pgContent">
+    
+    
+    {% for data in restaurant.data %}
+    <h2 class="pgSubTitle">{{ data.name }}</h2>
+    
+    
     {% for subcategory in data.subcategories %}
-        <tr><td colspan="3" align="center">{{ subcategory.name }}</td></tr>
-        {% for item in subcategory.items %}
-            <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.size}}</td>
-                <td>{{item.price}}</td>
-            </tr>
-        {% endfor %}
+    {% if subcategory.name != "" %}
+    <br/>
+    <p>{{subcategory.name}}</p>
+    <br/>
+    {% endif %}
+    
+    <ul class="menuList">
+        <li>
+            {% set i = 1 %}
+            
+            {% for item in subcategory.items %}
+            <div class="itemList">
+                <div class="leftSide"><h3>{{item.name}}</h3>
+                    
+                </div>
+                <div class="rightSide">{{item.price}}</div>
+                
+            </div>
+            {% if i == subcategory.items|length//2 %}
+        </li><li>
+            {% endif %}
+            {% set i=i+1 %}	
+            {% endfor %}  
+        </li>
+    </ul>
+    
+    {% endfor %}  
+    
+    <hr>
     {% endfor %}
-{% endfor %}
-</tbody>
-</table>
+    
+</div>
