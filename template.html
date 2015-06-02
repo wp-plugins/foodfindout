@@ -70,12 +70,14 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
 
 .pgTitle {width: 100%;font-size: 1.8em; font-weight:normal; line-height:120%;margin: 6.8em 0 1em 0;}
 .pgContent {position:relative;padding: 0 0 1em 0;}
-.pgSubTitle {width: 100%; font-size: 1.4em; font-weight:normal;color:#000;margin: 0 0 1em 0;}
+.pgSubTitle {width: 100%; font-size: 1.4em; font-weight:normal;color:#000;margin: 2.5em 0 1em 0;}
 .titleLink {font-size: 1.2em;  /*margin: -1em 0 0 0;*/}
 .titleLink a{font-weight:bold; margin: 0 0.5em;}
 .titleLink a.first {margin-left:0;}
 .titleLink a:hover, .titleLink a.active{color:#C30; font-style:italic;}
-
+/*****SUBCATEGORY--*****/
+.subcatg{
+    margin: 1.5em 0 0.5em;}
 /****-- MENU --****/
 .menuList, .menuListSmall, .menuDrink {list-style:none; width: 100%;overflow:hidden;}
 .menuList li, .menuListSmall li {width: 48%;float:left;display:table;}
@@ -156,9 +158,9 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
     
     {% for subcategory in data.subcategories %}
     {% if subcategory.name != "" %}
-    <br/>
-    <p>{{subcategory.name}}</p>
-    <br/>
+    
+    <p class="subcatg">{{subcategory.name}}</p>
+    
     {% endif %}
     
     <ul class="menuList">
@@ -176,12 +178,12 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
             {% if i == subcategory.items|length//2 %}
         </li><li>
             {% endif %}
-            {% set i=i+1 %}	
-            {% endfor %}  
+            {% set i=i+1 %}
+            {% endfor %}
         </li>
     </ul>
     
-    {% endfor %}  
+    {% endfor %}
     
     <hr>
     {% endfor %}
