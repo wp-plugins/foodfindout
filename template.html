@@ -33,7 +33,7 @@ body {
 }
 a, a:visited, a:hover, a:focus { color:#000; text-decoration: none;outline:none}
 p { margin: 0 0 1.2em; padding: 0; }
-hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:none;}
+hr {margin: 0 0 1.8e 0;color:#393939; background-color:#393939;height: 1px;border:none;}
 .ln-bg_wrapper, #ln-wrapper{width:100%;height:100%;min-height:100%;}
 
 .copyright {width:13%;font: normal 0.6em Arial, Helvetica, sans-serif; color:#545454; text-align:center;position:fixed; bottom: 2em;}
@@ -70,14 +70,15 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
 
 .pgTitle {width: 100%;font-size: 1.8em; font-weight:normal; line-height:120%;margin: 6.8em 0 1em 0;}
 .pgContent {position:relative;padding: 0 0 1em 0;}
-.pgSubTitle {width: 100%; font-size: 1.4em; font-weight:normal;color:#000;margin: 2.5em 0 1em 0;}
+.pgSubTitle {width: 100%; font-size: 1.4em; font-weight:normal;color:#000;margin: 0 0 1.2em 0; text-align: center}
 .titleLink {font-size: 1.2em;  /*margin: -1em 0 0 0;*/}
 .titleLink a{font-weight:bold; margin: 0 0.5em;}
 .titleLink a.first {margin-left:0;}
 .titleLink a:hover, .titleLink a.active{color:#C30; font-style:italic;}
 /*****SUBCATEGORY--*****/
 .subcatg{
-    margin: 1.5em 0 0.5em;}
+    margin: 0 0 0.5em;font-size:large;}
+.subcatgsep{margin: 0 0 1em 0;color:#393939; background-color:#393939;height: 0px;border:none;}
 /****-- MENU --****/
 .menuList, .menuListSmall, .menuDrink {list-style:none; width: 100%;overflow:hidden;}
 .menuList li, .menuListSmall li {width: 48%;float:left;display:table;}
@@ -158,8 +159,8 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
     
     {% for subcategory in data.subcategories %}
     {% if subcategory.name != "" %}
-    
-    <p class="subcatg">{{subcategory.name}}</p>
+    <hr class="subcatgsep">
+    <h2 class="subcatg">{{subcategory.name}}</h2>
     
     {% endif %}
     
@@ -178,8 +179,10 @@ hr {margin: 1em 0;color:#393939; background-color:#393939;height: 1px;border:non
             {% if i == subcategory.items|length//2 %}
         </li><li>
             {% endif %}
+            
             {% set i=i+1 %}
             {% endfor %}
+            
         </li>
     </ul>
     
