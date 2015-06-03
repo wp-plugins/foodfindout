@@ -14,11 +14,10 @@
     function insert_rest_info($atts){
         $loader = new Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
         $twig = new Twig_Environment($loader,array('cache' => $_SERVER['DOCUMENT_ROOT']."/templates/cache",));
-        $a = shortcode_atts( array('name' => 'default','template'=>'default'), $atts );
+        $a = shortcode_atts( array('name' => 'default','template'=>'template.html'), $atts );
         $template = $twig->loadTemplate($a['template']);
         $jsonarray=json_decode(file_get_contents("http://api.foodfindout.com/api/menu/".$a['name']));
         echo $template->render(array ('restaurant' =>$jsonarray ));
     }
     add_shortcode( 'restaurantinfo', 'insert_rest_info' );
-    
 ?>
