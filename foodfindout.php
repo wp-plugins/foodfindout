@@ -4,7 +4,7 @@
  *Plugin URI: http://wordpress.org/plugins/foodfindout/
  *Description: gets restaurant info from foodfindout server
  *Author: Sunny
- *Version: 1.0.0
+ *Version: 1.0.1
  */
 
 if(class_exists('Twig_Autoloader')==false){

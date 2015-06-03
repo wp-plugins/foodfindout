@@ -2,7 +2,7 @@
 Tags: restaurant,menu,foodfindout 
 Requires at least: 1.0.0
 Tested up to: 1.0.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Version: 1.0.0
 License: GPLv2 or later
 
@@ -28,6 +28,11 @@ Version 1.0.0
 * recieves response arrays from foodfindout.com
 * shortcode [restaurantdata] gets the menu data to the page
 * populates data as per template.html
+
+Version 1.0.1
+
+* changed template name to be passed through shortcode argument 'template'
+
 
 == Installation ==
 
